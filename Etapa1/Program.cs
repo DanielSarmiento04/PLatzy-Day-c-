@@ -1,5 +1,5 @@
 ﻿using CoreEscuela.Entidades;
-
+using static System.Console;
 
 var escuela = new Escuela(
     nombre: "PLatzi", año: 2002,
@@ -12,26 +12,53 @@ escuela.Ciudad = "Bucaramanga";
 Console.WriteLine(escuela.ToString());
 
 
-var arregloCurso = new Curso[3];
+Curso[] arregloCurso = {
+    new Curso()
+    {
+        Nombre = "101"
+    },
+    new Curso()
+    {
+        Nombre = "201"
+    },
+    new Curso()
+    {
+        Nombre = "301"
+    }
+};
 
-arregloCurso[0] = new Curso()
-{
-    Nombre = "101"
+escuela.Cursos = new Curso[]{
+    new Curso()
+    {
+        Nombre = "101"
+    },
+    new Curso()
+    {
+        Nombre = "201"
+    },
+    new Curso()
+    {
+        Nombre = "301"
+    }
 };
-var curso2 = new Curso()
-{
-    Nombre = "202"
-};
-arregloCurso[1] = curso2;
 
-arregloCurso[2] = new Curso()
-{
-    Nombre = "301"
-};
 System.Console.WriteLine("================");
+ImprimirCursosEscuela(escuela);
 
-ImprimirCursosForEach(arregloCurso);
-// ImprimirCursosWhile(arregloCurso);
+void ImprimirCursosEscuela(Escuela escuela)
+{
+    Console.WriteLine("Cursos de la escuela =");
+
+    if (escuela.Cursos != null && escuela != null || escuela?.Cursos != null)
+    {
+        foreach (var curso in escuela.Cursos)
+        {
+            WriteLine($"{curso.Nombre}-{curso.UniqueId}");
+        }
+    }
+
+
+}
 
 void ImprimirCursosWhile(Curso[] arregloCurso)
 {
